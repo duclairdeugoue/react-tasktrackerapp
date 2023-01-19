@@ -1,6 +1,18 @@
+import { Task } from "./Task";
 
-export const Tasks = () => {
+export const Tasks = ({ tasks, onDelete, onToggle }) => {
+  // TODO: function to delete a task by id
+
   return (
-    <div>Tasks</div>
-  )
-}
+    <>
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          task={task}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
+      ))}
+    </>
+  );
+};
