@@ -2,27 +2,15 @@
   "tasks": [
     {
       "id": 1,
-      "text": "Learning React Framework",
+      "text": "Learning HTML",
       "day": "Jan 18th at 3pm",
       "reminder": true
     },
     {
       "id": 2,
-      "text": "Learning React Framework",
+      "text": "Learning CSS",
       "day": "Jan 18th at 3pm",
       "reminder": false
-    },
-    {
-      "id": 3,
-      "text": "Learning React Framework",
-      "day": "Jan 18th at 3pm",
-      "reminder": false
-    },
-    {
-      "id": 4,
-      "text": "Learning React Framework",
-      "day": "Jan 18th at 3pm",
-      "reminder": true
     }
   ]
 }

@@ -6,7 +6,7 @@ const Header = ({ title, onAdd, btnToggleForm }) => {
     <header className="header">
       <h1>{title}</h1>
       <Button
-        text={btnToggleForm ? "Close": "Add"}
+        text={btnToggleForm ? "Close" : "Add"}
         color={btnToggleForm ? "red" : "green"}
         onClick={onAdd}
       />
@@ -15,7 +15,7 @@ const Header = ({ title, onAdd, btnToggleForm }) => {
 };
 
 Header.defaultProps = {
-  title: "Task tracker",
+  title: "Task Tracker",
 };
 
 Header.propTypes = {

@@ -1,12 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AddTask } from "./components/AddTask";
 import Header from "./components/Header";
 import { Tasks } from "./components/Tasks";
+
+const API_URI = "http://localhost:8000";
 
 function App() {
   const [showAddTaskForm, setAddTaskForm] = useState(false);
 
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const getAllTask = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    }
+
+    getAllTask();
+  }, []);
+
+  // TODO: Fetch Task from json-server
+  const fetchTasks = async () => {
+    const res = await fetch(`${API_URI}/tasks`);
+    const data = await res.json();
+
+    return data;
+  };
 
   // TODO: Add task
   const addTask = (task) => {
@@ -17,7 +36,11 @@ function App() {
   };
 
   // TODO: Delete task
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => { 
+    await fetch(`${API_URI}/tasks/${id}`, {
+      method: "DELETE"
+    });
+
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
