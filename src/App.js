@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import { Tasks } from "./components/Tasks";
 
 function App() {
+  const [showAddTaskForm, setAddTaskForm] = useState(false);
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -56,8 +58,11 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Header />
-        <AddTask onAdd={addTask} />
+        <Header
+          onAdd={() => setAddTaskForm(!showAddTaskForm)}
+          btnToggleForm={showAddTaskForm}
+        />
+        {showAddTaskForm && <AddTask onAdd={addTask} />}
         {tasks.length > 0 ? (
           <Tasks
             onDelete={deleteTask}
