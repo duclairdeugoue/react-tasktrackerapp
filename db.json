@@ -11,6 +11,12 @@
       "text": "Learning CSS",
       "day": "Jan 18th at 3pm",
       "reminder": false
+    },
+    {
+      "text": "Learning Vanilla JS",
+      "day": "Now",
+      "reminder": false,
+      "id": 3
     }
   ]
 }

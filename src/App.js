@@ -14,7 +14,7 @@ function App() {
     const getAllTask = async () => {
       const tasksFromServer = await fetchTasks();
       setTasks(tasksFromServer);
-    }
+    };
 
     getAllTask();
   }, []);
@@ -28,17 +28,30 @@ function App() {
   };
 
   // TODO: Add task
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() * 10000) + 1;
+  const addTask = async (task) => {
+    const res = await fetch(`${API_URI}/tasks`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(task),
+    });
+    
+    const data = res.json();
 
-    const newTask = { id, ...task };
-    setTasks([...tasks, newTask]);
+    setTasks([...tasks, data]);
+
+
+    // const id = Math.floor(Math.random() * 10000) + 1;
+
+    // const newTask = { id, ...task };
+    // setTasks([...tasks, newTask]);
   };
 
   // TODO: Delete task
-  const deleteTask = async (id) => { 
+  const deleteTask = async (id) => {
     await fetch(`${API_URI}/tasks/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
     });
 
     setTasks(tasks.filter((task) => task.id !== id));
